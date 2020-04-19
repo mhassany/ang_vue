@@ -1,4 +1,4 @@
 <div class="todo">
-  <input #todoEl class="todo-label" placeholder="type and press enter to add"
-    (keyup.enter)="addTodo(todoEl.value)">
+  <input class="todo-label" placeholder="type and press enter to add" [(ngModel)]="todo.label"
+    (keyup.enter)="addTodo()">
 </div>

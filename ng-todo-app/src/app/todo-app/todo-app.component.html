@@ -11,5 +11,13 @@
       Completed
     </button>
   </div>
+
   <todo-list></todo-list>
+
+  <div class="list-footer">
+    <span class="list-count">{{ service.data.length }} Tasks</span>
+    <button class="trash-toggle" (click)="service.trash = !service.trash">
+      <span></span>
+    </button>
+  </div>
 </div>

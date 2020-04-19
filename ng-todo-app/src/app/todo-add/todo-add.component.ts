@@ -9,18 +9,19 @@ import { TodoService } from '../services/todo.service';
 })
 export class TodoAddComponent implements OnInit {
 
+  todo = new Todo();
+
   constructor(private service: TodoService) { }
 
   ngOnInit(): void {
   }
 
-  addTodo(label: string) {
-    const todo = new Todo();
-    todo.label = label;
-    todo.completed = false;
-
-    this.service.add(todo).subscribe(
-      (resp) => this.service.reload(),
+  addTodo() {
+    this.service.add(this.todo).subscribe(
+      (resp) => {
+        this.todo = {} as any;
+        this.service.reload();
+      },
       (err) => console.log(err)
     );
   }

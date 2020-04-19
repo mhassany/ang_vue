@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Todo } from './todo';
-import { Observable } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +9,7 @@ export class TodoService {
 
   public tab: 'todo' | 'completed' = 'todo';
   public data: Todo[] = [];
+  public trash = false;
 
   constructor(private client: HttpClient) { }
 
@@ -35,5 +35,13 @@ export class TodoService {
 
   add(todo: Todo) {
     return this.client.post(this.api('todo'), todo);
+  }
+
+  update(todo: Todo) {
+    return this.client.put(this.api('todo/' + todo.id), todo);
+  }
+
+  destroy(id: number) {
+    return this.client.delete(this.api('todo/' + id));
   }
 }

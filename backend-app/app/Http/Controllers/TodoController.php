@@ -21,7 +21,7 @@ class TodoController extends Controller
     {
         $todo = Todo::findOrFail($id);
         $todo->label = $request->label;
-        $todo->completed = $request->completed === '1';
+        $todo->completed = $request->completed;
         $todo->save();
 
         return 1;
@@ -29,7 +29,7 @@ class TodoController extends Controller
 
     public function delete($id)
     {
-        Todo::findOrFail($id)->delet();
+        Todo::findOrFail($id)->delete();
         return 1;
     }
 
