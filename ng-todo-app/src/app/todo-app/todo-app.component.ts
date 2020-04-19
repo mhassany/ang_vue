@@ -14,9 +14,9 @@ export class TodoAppComponent implements OnInit {
     public service: TodoService) { }
 
   ngOnInit(): void {
-    const url = this.route.snapshot.url.join('/');
-    if (['todos', 'completed'].indexOf(url)) {
-      this.service.tab = url as any;
+    const path = this.route.snapshot.url.join('/');
+    if (['todos', 'completed'].indexOf(path)) {
+      this.service.tab = path as any;
       this.service.reload();
     }
   }

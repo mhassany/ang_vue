@@ -13,14 +13,13 @@ export class TodoComponent implements OnInit {
 
   constructor(public service: TodoService) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   update() {
-    this.service.update(this.todo).subscribe(resp => this.service.reload());
+    this.service.update(this.todo);
   }
 
   destory() {
-    this.service.destroy(this.todo.id).subscribe(resp => this.service.reload());
+    this.service.destroy(this.todo.id);
   }
 }

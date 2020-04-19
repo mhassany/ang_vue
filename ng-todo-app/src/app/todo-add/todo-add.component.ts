@@ -13,16 +13,9 @@ export class TodoAddComponent implements OnInit {
 
   constructor(private service: TodoService) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   addTodo() {
-    this.service.add(this.todo).subscribe(
-      (resp) => {
-        this.todo = {} as any;
-        this.service.reload();
-      },
-      (err) => console.log(err)
-    );
+    this.service.add(this.todo);
   }
 }

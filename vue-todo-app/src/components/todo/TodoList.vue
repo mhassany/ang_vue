@@ -1,7 +1,7 @@
 <template>
 	<div class="todo-list">
-		<Todo />
-		<TodoAdd />
+		<Todo v-for="todo of $store.state.data" v-bind:key="todo.id" :todo="todo" />
+		<TodoAdd v-if="$store.state.tab === 'todo'" />
 	</div>
 </template>
 
@@ -21,5 +21,6 @@ export default class TodoList extends Vue {}
 	position: relative;
 	overflow-y: scroll;
 	max-height: 245px;
+	margin-bottom: 1rem;
 }
 </style>

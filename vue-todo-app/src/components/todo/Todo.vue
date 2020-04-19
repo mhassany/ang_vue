@@ -1,16 +1,26 @@
 <template>
 	<div class="todo">
-		<input type="checkbox" />
-		<input class="todo-label" />
-		<button>x</button>
+		<input type="checkbox" v-model="todo.completed" v-on:change="update()" />
+		<input class="todo-label" v-model="todo.label" />
+		<button v-if="$store.state.trash" v-on:click="destroy()">x</button>
 	</div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue, Model } from "vue-property-decorator";
 
 @Component
-export default class Todo extends Vue {}
+export default class Todo extends Vue {
+	@Model() todo;
+
+	update() {
+		this.$store.dispatch("update", this.todo);
+	}
+
+	destroy() {
+		this.$store.dispatch("destroy", this.todo.id);
+	}
+}
 </script>
 
 <style scoped lang="less">

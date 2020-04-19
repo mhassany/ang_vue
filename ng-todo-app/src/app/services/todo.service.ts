@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Todo } from './todo';
+import { Observable } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -18,30 +19,34 @@ export class TodoService {
   }
 
   reload() {
+    let endpoint: Observable<Todo[]> = null;
+
     if (this.tab === 'todo') {
-      this.todos().subscribe(resp => this.data = resp);
+      endpoint = this.client.get<Todo[]>(this.api('todo'));
     } else if (this.tab === 'completed') {
-      this.completed().subscribe(resp => this.data = resp);
+      endpoint = this.client.get<Todo[]>(this.api('todo/completed'));
+    }
+
+    if (endpoint) {
+      endpoint.subscribe((resp: any) => this.data = resp);
     }
   }
 
-  todos() {
-    return this.client.get<Todo[]>(this.api('todo'));
-  }
-
-  completed() {
-    return this.client.get<Todo[]>(this.api('todo/completed'));
-  }
-
   add(todo: Todo) {
-    return this.client.post(this.api('todo'), todo);
+    return this.client.post(this.api('todo'), todo)
+      .subscribe(resp => {
+        this.reload();
+        todo.label = '';
+      });
   }
 
   update(todo: Todo) {
-    return this.client.put(this.api('todo/' + todo.id), todo);
+    return this.client.put(this.api('todo/' + todo.id), todo)
+      .subscribe(resp => this.reload());
   }
 
   destroy(id: number) {
-    return this.client.delete(this.api('todo/' + id));
+    return this.client.delete(this.api('todo/' + id))
+      .subscribe(resp => this.reload());
   }
 }
