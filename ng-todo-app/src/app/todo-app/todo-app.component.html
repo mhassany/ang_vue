@@ -1,14 +1,14 @@
 <div class="todo-app">
   <div class="category-tabs">
     <button [ngClass]="{
-        selected: service.activeTab === 'todo'
-      }" routerLink="todo">
+        selected: service.tab === 'todo'
+      }" routerLink="/todo">
       TODOs
     </button>
     <button [ngClass]="{
-        selected: service.activeTab === 'completed'
-      }" routerLink="completed">
-      Completeds
+        selected: service.tab === 'completed'
+      }" routerLink="/completed">
+      Completed
     </button>
   </div>
   <todo-list></todo-list>

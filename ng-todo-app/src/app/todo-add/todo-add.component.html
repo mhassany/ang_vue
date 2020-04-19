@@ -1,3 +1,4 @@
 <div class="todo">
-  <input class="todo-label" placeholder="type and press enter to add">
+  <input #todoEl class="todo-label" placeholder="type and press enter to add"
+    (keyup.enter)="addTodo(todoEl.value)">
 </div>

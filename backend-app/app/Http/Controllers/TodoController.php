@@ -10,7 +10,7 @@ class TodoController extends Controller
     public function save(Request $request)
     {
         $todo = new Todo();
-        $todo->lable = $request->label;
+        $todo->label = $request->label;
         $todo->completed = false;
         $todo->save();
 
@@ -33,12 +33,12 @@ class TodoController extends Controller
         return 1;
     }
 
-    public function onlyTodos()
+    public function todos()
     {
         return Todo::where('completed', false)->get();
     }
 
-    public function onlyCompleteds()
+    public function completed()
     {
         return Todo::where('completed', true)->get();
     }

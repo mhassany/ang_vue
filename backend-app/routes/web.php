@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-  Route::post('/todo',            'TodoController@save');
-   Route::put('/todo/{id}',       'TodoController@update');
-Route::delete('/todo/{id}',       'TodoController@delete');
-   Route::get('/todo/todos',      'TodoController@onlyTodos');
-   Route::get('/todo/completeds', 'TodoController@onlyCompleteds');
+  Route::post('/api/todo',           'TodoController@save');
+   Route::get('/api/todo',           'TodoController@todos');
+   Route::get('/api/todo/completed', 'TodoController@completed');
+   Route::put('/api/todo/{id}',      'TodoController@update');
+Route::delete('/api/todo/{id}',      'TodoController@delete');

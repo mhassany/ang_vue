@@ -1,7 +1,5 @@
 <div class="todo-list">
-  <todo></todo>
-  <todo></todo>
-  <todo></todo>
+  <todo *ngFor="let todo of service.data" [todo]="todo"></todo>
   <todo-add></todo-add>
 
   <div class="gap-spring"></div>

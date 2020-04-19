@@ -1,18 +1,19 @@
 .todo-list {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
   height: 100%;
   position: relative;
-}
-
-todo,
-todo-add {
-  display: block;
-  margin: 0.25rem 0.5rem;
+  margin-top: 0.5rem;
 }
 
 .gap-spring {
   flex-grow: 1;
+}
+
+.list-footer {
+  text-align: center;
+  padding: 0.25rem;
 }
 
 .trash-toggle {
@@ -22,11 +23,6 @@ todo-add {
   position: absolute;
   right: 0;
   bottom: 0;
-}
-
-.list-footer {
-  text-align: center;
-  padding: 0.25rem;
 }
 
 .list-count {
