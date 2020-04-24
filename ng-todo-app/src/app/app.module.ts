@@ -20,7 +20,11 @@ import { TodoAddComponent } from './todo-add/todo-add.component';
     TodoComponent,
     TodoAddComponent,
   ],
-  imports: [BrowserModule, FormsModule, HttpClientModule, RouterModule, AppRoutingModule],
+  imports: [
+    BrowserModule, FormsModule,
+    HttpClientModule, RouterModule,
+    AppRoutingModule
+  ],
   providers: [TodoService],
   bootstrap: [AppComponent],
 })

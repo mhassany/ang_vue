@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
-import TodoApp from "../views/TodoApp.vue"
+import TodoPage from "../views/TodoPage.vue"
 
 Vue.use(VueRouter);
 
@@ -8,17 +8,17 @@ const routes: Array<RouteConfig> = [
   {
     path: "/",
     name: "App",
-    component: TodoApp
+    component: TodoPage
   },
   {
     path: "/todo",
     name: "Todo",
-    component: TodoApp
+    component: TodoPage
   },
   {
     path: "/completed",
     name: "Completed",
-    component: TodoApp
+    component: TodoPage
   },
 ];
 
