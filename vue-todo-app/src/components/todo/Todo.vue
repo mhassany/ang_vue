@@ -8,10 +8,11 @@
 
 <script lang="ts">
 import { Component, Prop, Vue, Model } from "vue-property-decorator";
+import { Todo as Todo_ } from "../../store/Todo";
 
 @Component
 export default class Todo extends Vue {
-	@Model() todo;
+	@Model() todo!: Todo_;
 
 	update() {
 		this.$store.dispatch("update", this.todo);
